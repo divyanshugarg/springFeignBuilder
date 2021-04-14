@@ -14,16 +14,16 @@ In this example, I used following libraries to configure our Feign builder. Reme
   decoder: SpringDecoder
   metric: Micrometer
 ```
-Apart from it, we also override Feign build client to add below capabilities:
+Apart from it, I am also overriden Feign builder to take care below operations while perofrming any web request:
 ```
-  1- Add some default set of Headers while sending any request with the control to override (add, remove, update) at each method/request level
+  1- Add some default set of Headers while sending any request with the control to override (add, remove, update) at each method/client level
   2- Decode Slash at each request
-  3- Retry incase of any failure with maximum-attempts and max-period
+  3- Retry incase of any failure based on maximum-attempts and max-period
   4- Decode 404 response code
-  5- Override Feign logger Level (None, basic, Headers, Full) through property
+  5- Override Feign logger Level (None, basic, Headers, Full) through property to get more insights specially during debug/troubleshooting
 ```
-# Override/Enable/Disable Basic features: 
-Although we created Feign basic configuration as per industry best practice. It is also true that one size can't be fit for all. Considering it, I provided the option to override/enable/disable any configuration/features via passing corresponding property value in your service application property file. Refer [com.vads.springFeignBuilder.properties.FeignProperties](https://github.com/divyanshugarg/springFeignBuilder/blob/main/src/main/java/com/vads/springFeignBuilder/properties/FeignProperties.java) and [com.vads.springFeignBuilder.configuration.FeignBasicConfiguration](https://github.com/divyanshugarg/springFeignBuilder/blob/main/src/main/java/com/vads/springFeignBuilder/configuration/FeignBasicConfiguration.java) class to get more insight. 
+# Override/Enable/Disable any Basic features: 
+Although we created Feign basic configuration as per best practice. But it is also true that one size can't be fit for all. Considering it, I provided the option to override/enable/disable any configuration/features via passing corresponding property value in your service application property file. Refer [com.vads.springFeignBuilder.properties.FeignProperties](https://github.com/divyanshugarg/springFeignBuilder/blob/main/src/main/java/com/vads/springFeignBuilder/properties/FeignProperties.java) and [com.vads.springFeignBuilder.configuration.FeignBasicConfiguration](https://github.com/divyanshugarg/springFeignBuilder/blob/main/src/main/java/com/vads/springFeignBuilder/configuration/FeignBasicConfiguration.java) class to get more insight. 
 As an example, if you don't want to use OkHttp as Feign default client then you can disable it via setting `spring.common.lib.feign.ok.client.enabled` property value as `false`. Another, suppose you want to set your http client connection timeout as 5 seconds, then you can define it via setting `spring.common.lib.feign.httpClient.connectionTimeout` property value as `5000`.
 
 # How to give a try:
