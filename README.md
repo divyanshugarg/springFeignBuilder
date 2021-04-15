@@ -25,8 +25,8 @@ Apart from it, I am also overriden Feign builder to take care below operations w
 # How to Override/Enable/Disable any Basic features: 
 Although we created Feign basic configuration as per best practice. But it is also true that one size can't be fit for all. Considering it, I provided the option to override/enable/disable any configuration/features via passing corresponding property value in your service application property file. Refer [com.vads.springFeignBuilder.properties.FeignProperties](https://github.com/divyanshugarg/springFeignBuilder/blob/main/src/main/java/com/vads/springFeignBuilder/properties/FeignProperties.java) and [com.vads.springFeignBuilder.configuration.FeignBasicConfiguration](https://github.com/divyanshugarg/springFeignBuilder/blob/main/src/main/java/com/vads/springFeignBuilder/configuration/FeignBasicConfiguration.java) class to get more insight. 
 As an example, 
-1. if you don't want to use OkHttp as Feign default client then you can disable it via setting `spring.common.lib.feign.ok.client.enabled` property value as `false`. 
-2. Another, suppose you want to set your http client connection timeout as 5 seconds, then you can define it via setting `spring.common.lib.feign.httpClient.connectionTimeout` property value as `5000`.
+1. if we don't want to use OkHttp as Feign default client then we can disable it via setting `spring.common.lib.feign.ok.client.enabled` property value as `false`. 
+2. Another, suppose we want to set http client connection-timeout as 5 seconds, then we can define it via setting `spring.common.lib.feign.httpClient.connectionTimeout` property value as `5000` in application property file.
 3. If we want to exclude any header value added by default in each request, we can do so via using `@FilterHeaders`annotation. Refer 'com.vads.springFeignBuilder.webclient.JsonplaceholderClient#getPostById' .
 4. If we want to inculde more headers apart from default set or want to override any default set header's value, we can do so via using `@RequestMapping`annotation. Refer 'com.vads.springFeignBuilder.webclient.JsonplaceholderClient#getPostById' .
 
